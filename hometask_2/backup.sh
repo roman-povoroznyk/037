@@ -1,7 +1,7 @@
 #!/bin/bash
 if [[ -n $1 && -d $1 ]]
 then
-	if [[ $(find $1 -ctime -1)  ]]
+	if [[ $(find $1 -ctime -1) ]]
 	then
 		echo "// New or modificated file(s) found."
 		if [[ -n $2 && ! -d $2 ]]
