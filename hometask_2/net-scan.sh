@@ -1,5 +1,4 @@
 #!/bin/bash
-
 for host in "$@"
 do
 	for port in {80,443}
