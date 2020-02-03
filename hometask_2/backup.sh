@@ -23,10 +23,10 @@ then
 			fi
 		elif [[ -d $2 ]]
 		then
-			$(mkdir -p $2/$(date +%Y%m%d))
+			mkdir -p $2/$(date +%Y%m%d)
 			if [[ $(find $1 -ctime -1 -exec rsync -R {} $2/$(date +%Y%m%d) \;) ]]
                 	then
-                        	echo "// Copied file(s) to \"$2/$(date +%Y%m%d)\"."
+                        	echo "// Copied file(s) to \"$2/$(date +%Y%m%d)/\"."
                 	else
                                 echo "// Can't copy file(s)."
 				exit
