@@ -1,9 +1,7 @@
 #!/bin/bash
-
 (( EUID != 0 )) && exec sudo -- "$0" "$@"
-USR=osboxes
-FILE="/home/$USR/update.sh"
-CRONJOB="30 5 * * 1 bash  $FILE"
+FILE="/FULL/PATH/update.sh"
+CRONJOB="0 9 * * 2 bash  $FILE"
 
 if [[ ! $(crontab -l | grep $FILE) ]]
 then
