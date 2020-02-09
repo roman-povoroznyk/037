@@ -1,6 +1,7 @@
 #!/bin/bash
 (( EUID != 0 )) && exec sudo -- "$0" "$@"
-FILE="/FULL/PATH/update.sh"
+WORKDIR=$(pwd)
+FILE="$WORKDIR/update.sh"
 CRONJOB="0 9 * * 2 bash  $FILE"
 
 if [[ ! $(crontab -l | grep $FILE) ]]
