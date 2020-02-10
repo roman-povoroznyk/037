@@ -19,7 +19,7 @@ innodb_log_file_size=2GB \
 binlog_format=row \
 ' /etc/mysql/my.cnf
 
-sudo sed -i '1,/16M/! {0,/16M/ s/16M/34M/}' /etc/mysql/mysql.conf.d/mysqld.cnf 
+sed -i '1,/16M/! {0,/16M/ s/16M/34M/}' /etc/mysql/mysql.conf.d/mysqld.cnf 
 
 /etc/init.d/mysql restart
 
