@@ -1,10 +1,6 @@
 #!/usr/bin/env bash
 export DEBIAN_FRONTEND=noninteractive
 
-DBNAME=CONFLUENCE
-DBUSER=root
-DBPASSWD=123456
-
 debconf-set-selections <<< "mysql-server mysql-server/root_password password 123456"
 debconf-set-selections <<< "mysql-server mysql-server/root_password_again password 123456"
 
@@ -23,7 +19,7 @@ innodb_log_file_size=2GB \
 binlog_format=row \
 ' /etc/mysql/my.cnf
 
-sed -i 's/max_allowed_packet      = 16M/max_allowed_packet      = 34M/' /etc/mysql/mysql.conf.d/mysqld.cnf
+sed -ie '1,/16M/ s/16M/34M/' /etc/mysql/mysql.conf.d/mysqld.cnf  
 
 /etc/init.d/mysql restart
 
