@@ -24,11 +24,5 @@ docker network connect wp-msql apache-wordpress
 docker exec mysql mysql -u root -p --skip-password -e "CREATE DATABASE wordpress;"
 docker exec mysql mysql -u root -p --skip-password -e "CREATE USER 'wordpress'@'172.18.0.3' IDENTIFIED BY 'wordpress';"
 docker exec mysql mysql -u root -p --skip-password -e "GRANT ALL ON wordpress.* TO 'wordpress'@'172.18.0.3';"
-
+docker exec apache-wordpress chown -R www-data:www-data /var/www/html
 echo -e "Username: wordpress\nPassword: wordpress\nDatabase: wordpress\nLocalhost: 172.18.0.3" 
-
-#docker exec wordpress chown -R www-data:www-data /var/www/html # So Apache is able to manage the WordPress files
-
-
-
-
