@@ -17,7 +17,7 @@ apt update
 apt install -y docker-ce
 
 docker run -d -p 80:80 --name mysql romashultz/mysql
-docker run -d -p --name apache-wordpress romashultz/apache-wordpress
+docker run -d --name apache-wordpress romashultz/apache-wordpress
 docker network create wp-msql
 docker network connect wp-msql mysql
 docker network connect wp-msql apache-wordpress
