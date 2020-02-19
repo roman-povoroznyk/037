@@ -11,4 +11,4 @@ docker exec wp a2enmod headers
 docker exec wp a2ensite default-ssl
 docker exec wp a2enconf ssl-params
 docker exec wp apachectl restart
-echo -e "Username: wordpress\nPassword: wordpress\nDatabase: wordpress\nLocalhost: 192.168.0.2" 
+echo -e "Username: wordpress\nPassword: wordpress\nDatabase: wordpress\nLocalhost: 192.168.0.2\n80 -> localhost:8080\m443 -> localhost:8081\P.S. No redirect" 
