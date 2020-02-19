@@ -4,16 +4,17 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/bionic64"
   config.vm.network "forwarded_port", guest: 80, host: 8080, host_ip: "127.0.0.1"
+    config.vm.network "forwarded_port", guest: 443, host: 8081, host_ip: "127.0.0.1"
   config.vm.provider "virtualbox" do |vb|
     vb.name = "ubuntu1804"
 	vb.memory = 4096
   end
   
   config.vm.provision "docker" do |docker|
-    docker.pull_images "romashultz/apache-php-wordpress"
+    docker.pull_images "romashultz/apache-php-wordpress-ssl:v2"
     docker.pull_images "romashultz/mysql"
 	docker.run "db", image: "romashultz/mysql"
-    docker.run "wp", image: "romashultz/apache-php-wordpress",
+    docker.run "wp", image: "romashultz/apache-php-wordpress-ssl:v2",
 		args: "-p 80:80/tcp  -p 443:443/tcp"
   end
   

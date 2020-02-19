@@ -6,4 +6,9 @@ docker exec db mysql -u root -p --skip-password -e "CREATE DATABASE wordpress CH
 docker exec db mysql -u root -p --skip-password -e "CREATE USER 'wordpress'@'192.168.0.3' IDENTIFIED BY 'wordpress';"
 docker exec db mysql -u root -p --skip-password -e "GRANT ALL ON wordpress.* TO 'wordpress'@'192.168.0.3';"
 docker exec db mysql -u root -p --skip-password -e "FLUSH PRIVILEGES;"
+docker exec wp a2enmod ssl
+docker exec wp a2enmod headers
+docker exec wp a2ensite default-ssl
+docker exec wp a2enconf ssl-params
+docker exec wp apachectl restart
 echo -e "Username: wordpress\nPassword: wordpress\nDatabase: wordpress\nLocalhost: 192.168.0.2" 
